@@ -212,6 +212,19 @@ git pull origin master
 
 https://github.com/gxf9532/react_admin.git
 
+本地创建新分支 
+git checkout -b dev  
+
+将本地dev分支推送到远程
+git push origin dev
+
+根据远程dev生成本地dev
+
+Administrator@WIN-K15M778LIA3 MINGW32 /c/phpStudy/PHPTutorial/WWW/web/0603/project/react_admin (master)
+$ git checkout -b dev origin/dev(注意这里 origin/dev)
+
+
+
 
 
 
