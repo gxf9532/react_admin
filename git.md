@@ -212,6 +212,11 @@ git pull origin master
 
 https://github.com/gxf9532/react_admin.git
 
+在项目文件夹下面创建新分支dev 
+git checkout -b dev  
+
+git push origin dev  // 从本地dev分支推送到远程dev(如果没有则会创建)
+
 
 
 
