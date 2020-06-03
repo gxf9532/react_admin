@@ -216,6 +216,13 @@ https://github.com/gxf9532/react_admin.git
 git checkout -b dev  
 
 git push origin dev  // 从本地dev分支推送到远程dev(如果没有则会创建)
+这时远程会创建一个dev分支(内容和主分支相同)
+
+本地在dev分支下执行
+git add . 
+git commit -m dev  
+git push origin dev 
+
 
 
 
