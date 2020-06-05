@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import logo from '../../assets/images/logo.jpg'
 import './login.less'
-import { Form, Icon, Input, Button, Checkbox } from 'antd'
-
+import { Form, Icon, Input, Button, message } from 'antd'
+import { loginRequest } from '../../api'
 const Item = Form.Item
 
 class Login extends Component {
@@ -11,16 +11,38 @@ class Login extends Component {
        
         e.preventDefault()
         const form = this.props.form
-        const values = form.getFieldsValue()
+        // const values = form.getFieldsValue()
         //{username: "admin", password: "123"}
 
+        /** 
+             * async/await的理解和使用  
+             * 简化promise对象的使用  不再使用then()
+             * 用同步的方式实现异步流程 
+             * 
+             * 使用 
+             * 哪里使用await? 在返回primise对象的表达式左侧  
+             * 左侧得到的不再是promise 而是promise异步成功的值 
+             * 
+             * 哪里使用async? await所在的最近函数定义的左侧 
+             * 
+            */
+            // 这里的await拿到成功的值 
         // 进行表单的统一验证
-        form.validateFields((err, values) => {
+        form.validateFields(async (err, { username, password }) => {
             if (!err) {
-                console.log(values)
+                let resData = await loginRequest(username, password)
+
+                if (resData.status === 0) {
+                    // 登录成功 
+                    message.success('登录成功!')
+                    
+                    // 跳转到后台首页
+                    this.props.history.push('/')
+                } else {
+                    message.error(resData.mes)
+                }
             }
         })
-
 
     }
 

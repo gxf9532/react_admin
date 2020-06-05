@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {message} from 'antd'
+// import {message} from 'antd'
 import {BrowserRouter,Switch,Route} from 'react-router-dom'
 import Admin from './pages/admin/Admin'
 import Login from './pages/login/Login'
