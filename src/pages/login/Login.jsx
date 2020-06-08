@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import logo from '../../assets/images/logo.jpg'
 import './login.less'
 import { Form, Icon, Input, Button, message } from 'antd'
+import { Redirect } from 'react-router-dom'
+import localUtils from '../../utils/localUtils'
+import memUtils from '../../utils/memUtils'
 import { loginRequest } from '../../api'
 const Item = Form.Item
 
@@ -31,9 +34,14 @@ class Login extends Component {
         form.validateFields(async (err, { username, password }) => {
             if (!err) {
                 let resData = await loginRequest(username, password)
-
+                console.log(resData)
                 if (resData.status === 0) {
                     // 登录成功 
+                    // localStorage.setItem('user_key', JSON.stringify(resData.result))
+                    // 向本地写入登陆信息
+                    localUtils.saveLoginData(resData.result)
+                    // 向内存写入登陆信息
+                    memUtils.isLogin = resData.result
                     message.success('登录成功!')
                     
                     // 跳转到后台首页
@@ -63,6 +71,16 @@ class Login extends Component {
         }
     }
     render() {
+        // const userData = JSON.parse(localStorage.getItem('user_key'))
+        // if (userData._id) {
+        //     return <Redirect to='/'/>
+        // }
+        // const userData = localUtils.getLoginData()
+
+            const userData = memUtils.isLogin
+        if (userData._id) {
+            return <Redirect to='/'/>
+        }
         const { getFieldDecorator } = this.props.form
         return (
             <div className="login"> 
