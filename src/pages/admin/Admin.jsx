@@ -8,6 +8,7 @@ import LeftNav from '../../components/left-nav'
 import Header from '../../components/header'
 import Home from '../home/home'
 import Goods from '../goods/goods'
+import Category from '../category/category'
 const { Footer, Sider, Content } = Layout
 export default class Admin extends Component {
     render() {
@@ -30,10 +31,11 @@ export default class Admin extends Component {
                         <Switch>
                             <Route path="/home" component={Home}/>
                             <Route path="/goods" component={Goods}/>
+                            <Route path="/category" component={Category}/>
                             <Redirect to="/home"/>
                         </Switch>
                     </Content>
-                    <Footer>Footer</Footer>
+                    <Footer style={{ textAlign: 'center', color: '#000', borderTop: '1px solid #37DFBC'}}>本系统推荐使用最新版谷歌浏览器以获得最佳浏览效果</Footer>
                 </Layout>
             </Layout>
         )
