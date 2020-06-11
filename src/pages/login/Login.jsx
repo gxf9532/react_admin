@@ -34,7 +34,7 @@ class Login extends Component {
         form.validateFields(async (err, { username, password }) => {
             if (!err) {
                 let resData = await loginRequest(username, password)
-                console.log(resData)
+                // console.log(resData)
                 if (resData.status === 0) {
                     // 登录成功 
                     // localStorage.setItem('user_key', JSON.stringify(resData.result))
