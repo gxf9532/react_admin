@@ -60,7 +60,7 @@ class CategoryForm extends Component {
                 <Item>
                     {
                         getFieldDecorator('parentId', {
-                            initialValue: parentId,
+                            initialValue: '0',
                             rules: []
 
                         })(
@@ -78,7 +78,7 @@ class CategoryForm extends Component {
                 <Item>
                     {
                         getFieldDecorator('name', {
-                            initialValue: '',
+                            initialValue: name,
                             rules: [
                                 { required: true, message: '分类名称必须输入!' }
                             ]

@@ -19,3 +19,5 @@ export const reqAddCategory = (name, parentId) => ajax.post('/manage/category/ad
 export const reqCategory = (parentId) => ajax.get('/manage/category/list?parentId=' + parentId)
 
 export const reqUpdateCategory = (_id, name) => ajax.post('/manage/category/update', {_id, name})
+
+export const reqAllCategory = () => ajax.get('/manage/category/listAll')
