@@ -7,7 +7,7 @@ import './admin.less'
 import LeftNav from '../../components/left-nav'
 import Header from '../../components/header'
 import Home from '../home/home'
-import Goods from '../goods/goods'
+import Product from '../product/product'
 import Category from '../category/category'
 const { Footer, Sider, Content } = Layout
 export default class Admin extends Component {
@@ -30,7 +30,7 @@ export default class Admin extends Component {
                     <Content>
                         <Switch>
                             <Route path="/home" component={Home}/>
-                            <Route path="/goods" component={Goods}/>
+                            <Route path="/product" component={Product}/>
                             <Route path="/category" component={Category}/>
                             <Redirect to="/home"/>
                         </Switch>

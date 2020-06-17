@@ -21,3 +21,6 @@ export const reqCategory = (parentId) => ajax.get('/manage/category/list?parentI
 export const reqUpdateCategory = (_id, name) => ajax.post('/manage/category/update', {_id, name})
 
 export const reqAllCategory = () => ajax.get('/manage/category/listAll')
+
+// 删除文件
+export const reqDeleteImg = name => ajax.post('/manage/img/delete', { name }) 

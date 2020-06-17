@@ -7,12 +7,12 @@ export const menuList = [
     
     {
         title: '商品',
-        key: '/good',
+        key: '/products',
         icon: 'mail',
         childMenu: [
             {
                 title: '商品管理',
-                key: '/goods',
+                key: '/product',
                 icon: 'shop'
             },
             {

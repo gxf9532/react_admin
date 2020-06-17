@@ -64,7 +64,7 @@ class leftNav extends Component {
                 </Link>
                 <Menu
                     selectedKeys={[pathKey]}
-                    defaultOpenKeys={['/goods']}
+                    defaultOpenKeys={['/products']}
                     mode="inline"
                     theme="dark"
                     inlineCollapsed={this.state.collapsed}
