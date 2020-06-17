@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Card, Icon, Form, Input, Select, Button, message } from 'antd'
-import { reqAllCategory } from '../../api'
+import { reqAllCategory, reqAddProduct } from '../../api'
 import PicturesWall from './pictureswall'
+import RichTextEditor from './richeditor'
 const { Option } = Select;
 
 class Addupdate extends Component {
@@ -14,6 +15,9 @@ class Addupdate extends Component {
         super(props)
         // 创建ref容器 
         this.picRef = React.createRef()
+
+        // 创建富文本编辑器
+        this.richRef = React.createRef()  
     }
     // 处理用户提交
     getcategorys = async () => {
@@ -45,10 +49,30 @@ class Addupdate extends Component {
         event.preventDefault()  
         
         // 进行表单的统一验证
-        this.props.form.validateFields((err, values) => {
+        this.props.form.validateFields( async (err, values) => {
             if (!err) {
               
                const { name, desc, price, categoryId} = values
+                
+               const imgs = this.picRef.current.getImgs()
+
+            //    console.log(name, desc, price, categoryId)
+            //    console.log(imgs)
+
+                const detail = this.richRef.current.getDetail()
+                // console.log(richText)
+
+                // 向后台发送数据 
+
+                // 封装发送的数据对象
+                const product = { name, desc, price, categoryId, imgs, detail}
+                
+                const result = await reqAddProduct(product)
+
+                if (result.status === 0) {
+                    message.success('添加商品成功!')
+                    this.props.history.replace('/product')
+                }
                 
             }
         })
@@ -122,6 +146,10 @@ class Addupdate extends Component {
 
                     <Item label="商品图片">
                         <PicturesWall ref={this.picRef}/>
+                    </Item>
+               
+                    <Item label="商品详情" wrapperCol={{ span: 20}}>
+                        <RichTextEditor ref={this.richRef}/>
                     </Item>
 
                     <Item label="">

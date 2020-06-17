@@ -24,3 +24,6 @@ export const reqAllCategory = () => ajax.get('/manage/category/listAll')
 
 // 删除文件
 export const reqDeleteImg = name => ajax.post('/manage/img/delete', { name }) 
+
+// 添加商品
+export const reqAddProduct = product => ajax.post('/manage/product/add', { product })

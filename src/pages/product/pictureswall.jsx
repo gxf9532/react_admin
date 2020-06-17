@@ -25,6 +25,9 @@ export default class PicturesWall extends React.Component {
         ],
     };
 
+    // 获取所有已上传图片的数组 
+    getImgs = () => this.state.fileList.map(file => file.url.substr(file.url.lastIndexOf('/')+1))
+
     handleCancel = () => this.setState({ previewVisible: false });
 
       handlePreview = async file => {
