@@ -27,3 +27,14 @@ export const reqDeleteImg = name => ajax.post('/manage/img/delete', { name })
 
 // 添加商品
 export const reqAddProduct = product => ajax.post('/manage/product/add', { product })
+
+// 验证商品名是否重复 
+export const reqGoodsName = name => ajax.get('/manage/product/name?name=' + name)
+
+// 请求商品数据(带分页)
+export const reqProducts = (pageNum, pageSize) => ajax.get('/manage/product/list', {
+    params: {
+        pageNum,
+        pageSize
+    }
+})

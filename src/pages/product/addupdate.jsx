@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Card, Icon, Form, Input, Select, Button, message } from 'antd'
-import { reqAllCategory, reqAddProduct } from '../../api'
+import { reqAllCategory, reqAddProduct, reqGoodsName } from '../../api'
 import PicturesWall from './pictureswall'
+import { Debounce } from '../../utils/debounceUtil'
 import RichTextEditor from './richeditor'
 const { Option } = Select;
 
@@ -39,6 +40,20 @@ class Addupdate extends Component {
             callback()
         }
     }
+    
+    // 自定商品名称验证器(函数防抖优化 减少请求次数)  
+    checkGoodsName = Debounce(async (rule, value, callback) => {
+        // 在数据库中查找是否有同名商品  
+        const { status } = await reqGoodsName(value)
+        if (value === '') {
+            callback('') 
+        } else if(status === 1) {
+            callback('此商品已存在!')
+        } else {
+            callback()
+        }
+
+    }, 500)
 
     componentDidMount() {
         this.getcategorys()
@@ -99,6 +114,8 @@ class Addupdate extends Component {
                             rules: [{
                                 required: true,
                                 message: "必须输入商品名称!"
+                            },{
+                                validator: this.checkGoodsName
                             }]
                         })(<Input placeholder="商品名称" />)}
                     </Item>

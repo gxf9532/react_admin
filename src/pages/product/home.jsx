@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Card, Table, Button, Icon, Input, Select } from 'antd'
-
+import { reqProducts } from '../../api'
 const Option = Select.Option
 export default class Home extends Component {
 
@@ -8,19 +8,19 @@ export default class Home extends Component {
         loading: false, // 是否正在加载 
         total: 0, //商品总数量
         products: [
-            {
-                "status": 0,
-                "imgs": [
-                    "qweqw3123dWSDSDAkl23313.jpg"
-                ],
-                "_id": "adwdqpwoe131231231235op",
-                "name": "联想笔记本",
-                "desc": "这是一台非常好用的笔记本",
-                "price": 3000,
-                "detail": "这里是商品详情",
-                "categoryId": "5ee2e42f1bfc8f0d98ea4355",
-                "__v": 0
-            }
+            // {
+            //     "status": 0,
+            //     "imgs": [
+            //         "qweqw3123dWSDSDAkl23313.jpg"
+            //     ],
+            //     "_id": "adwdqpwoe131231231235op",
+            //     "name": "联想笔记本",
+            //     "desc": "这是一台非常好用的笔记本",
+            //     "price": 3000,
+            //     "detail": "这里是商品详情",
+            //     "categoryId": "5ee2e42f1bfc8f0d98ea4355",
+            //     "__v": 0
+            // }
           
         ]
     }
@@ -29,6 +29,9 @@ export default class Home extends Component {
         this.initColumns()
     }
 
+    componentDidMount() {
+        this.getProducts(1)
+    }
     // 初始化商品操作
     optHandle = product => {
         return (
@@ -86,6 +89,22 @@ export default class Home extends Component {
         ]
     }
 
+    
+
+    // 异步获取商品显示 
+    getProducts = async (pageNum, pageSize = 2) => {
+        // 发送请求数据
+        const result = await reqProducts(pageNum, pageSize)
+        // console.log(result)
+        if (result.status === 0) {
+            // 取出数据
+            const { total, list } = result.data
+            // 更新状态
+
+            this.setState({ products: list, total })
+        }
+    }
+
     render() {
         const { loading, products, total } = this.state
 
@@ -118,7 +137,7 @@ export default class Home extends Component {
                         loading={loading}
                         columns={this.columns}
                         dataSource={products}
-                        pagination={{ defaultPageSize: 4, showQuickJumper: true }}
+                        pagination={{ total, defaultPageSize: 2, showQuickJumper: true, onChange: this.getProducts }}
 
                     />
 
