@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Input, message, Select } from 'antd'
+import { Form, Input, Select } from 'antd'
 import PropTypes from 'prop-types'
 const Item = Form.Item
 const Option = Select.Option
@@ -19,7 +19,7 @@ class CategoryForm extends Component {
 
         const { getFieldDecorator } = this.props.form
 
-        const { flag, name, _id, categorys, parentId } = this.props
+        const { flag, name, _id, categorys } = this.props
         // console.log(categorys)
         if (flag) {
             // 修改分类操作

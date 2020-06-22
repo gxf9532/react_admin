@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Card, Table, Modal, Form, message } from 'antd'
+import { Button, Card, Table, Modal, message } from 'antd'
 import CategoryForm from './categoryForm'
 import { reqAddCategory, reqCategory, reqUpdateCategory, reqAllCategory } from '../../api'
 import MyButton from '../../components/my-button'

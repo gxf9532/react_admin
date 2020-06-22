@@ -21,6 +21,11 @@ export const menuList = [
                 icon: 'linkedin'
             }
         ]
+    },
+    {
+        title: '角色管理',
+        key: '/role',
+        icon: 'home'
     }
 
 ]

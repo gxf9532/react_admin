@@ -9,6 +9,7 @@ import Header from '../../components/header'
 import Home from '../home/home'
 import Product from '../product/product'
 import Category from '../category/category'
+import Role from '../role/role'
 const { Footer, Sider, Content } = Layout
 export default class Admin extends Component {
     render() {
@@ -32,6 +33,7 @@ export default class Admin extends Component {
                             <Route path="/home" component={Home}/>
                             <Route path="/product" component={Product}/>
                             <Route path="/category" component={Category}/>
+                            <Route path="/role" component={Role}/>
                             <Redirect to="/home"/>
                         </Switch>
                     </Content>

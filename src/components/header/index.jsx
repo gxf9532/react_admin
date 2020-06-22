@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { withRouter, Redirect } from 'react-router-dom'
-import { Modal, Button } from 'antd'
+import { withRouter } from 'react-router-dom'
+import { Modal } from 'antd'
 import localUtils from '../../utils/localUtils'
 import memUtils from '../../utils/memUtils'
 import MyButton from '../my-button/index'

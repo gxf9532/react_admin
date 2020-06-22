@@ -38,3 +38,9 @@ export const reqProducts = (pageNum, pageSize) => ajax.get('/manage/product/list
         pageSize
     }
 })
+
+// 添加角色
+export const addRoles = name => ajax.post('/manage/role/add', { name })
+
+// 请求所有角色 
+export const reqRoles = () => ajax.get('/manage/role/list')

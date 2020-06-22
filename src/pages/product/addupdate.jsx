@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, Icon, Form, Input, Select, Button, message } from 'antd'
+import { Card, Form, Input, Select, Button, message } from 'antd'
 import { reqAllCategory, reqAddProduct, reqGoodsName } from '../../api'
 import PicturesWall from './pictureswall'
 import { Debounce } from '../../utils/debounceUtil'
