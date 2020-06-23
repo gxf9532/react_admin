@@ -44,3 +44,6 @@ export const addRoles = name => ajax.post('/manage/role/add', { name })
 
 // 请求所有角色 
 export const reqRoles = () => ajax.get('/manage/role/list')
+
+// 更新角色 
+export const updateRoles = role => ajax.post('/manage/role/update', role)
