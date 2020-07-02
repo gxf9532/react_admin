@@ -4,6 +4,8 @@ import { Menu, Icon } from 'antd'
 import logo from '../../assets/images/logo.jpg'
 import './index.less'
 import { menuList } from '../../config/menu'
+import { setTitle } from '../../redux/actions'
+import { connect } from 'react-redux'
 const { SubMenu } = Menu
 class leftNav extends Component {
 
@@ -24,7 +26,7 @@ class leftNav extends Component {
             if(!item.childMenu) {
                 return (
                     <Menu.Item key={item.key}>
-                        <Link to={item.key}>
+                        <Link to={item.key} onClick={() => this.props.setTitle(item.title)}>
                             <Icon type={item.icon} />
                             <span>{item.title}</span>
                         </Link>
@@ -108,4 +110,7 @@ class leftNav extends Component {
     }
 }
 
-export default withRouter(leftNav)
+export default connect(
+    state => ({}),
+    {setTitle}
+)(withRouter(leftNav))

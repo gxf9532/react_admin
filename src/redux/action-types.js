@@ -1,2 +1,6 @@
-export const INCREMENT = 'increment'
-export const DECREMENT = 'decrement'
+/**
+ *  指定action的常量
+ * 
+ */
+export const HEAD_TITLE = 'head_title'
+

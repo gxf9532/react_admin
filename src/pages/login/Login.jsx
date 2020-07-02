@@ -45,7 +45,7 @@ class Login extends Component {
                     message.success('登录成功!')
                     
                     // 跳转到后台首页
-                    this.props.history.push('/')
+                    this.props.history.push('/home')
                 } else {
                     message.error(resData.mes)
                 }

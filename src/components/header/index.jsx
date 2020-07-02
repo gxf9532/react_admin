@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { Modal } from 'antd'
+
+// 引入react-redux 
+import { connect } from 'react-redux'
+
 import localUtils from '../../utils/localUtils'
 import memUtils from '../../utils/memUtils'
 import MyButton from '../my-button/index'
@@ -52,7 +56,7 @@ class Header extends Component {
                 // 删除用户登陆信息(1)本地local (2)内存
                 localUtils.removeLoginData()
                 memUtils.isLogin = {}
-
+                
                 this.props.history.replace('/')
             },
             onCancel() { },
@@ -82,6 +86,9 @@ class Header extends Component {
         // 获取当前时间
         const { currentTime }  = this.state
         this.getTitle(menuList)
+
+        const title = this.props.headTitle
+        
         return (
             <div className="header">
                 <div className="header-top">
@@ -90,7 +97,10 @@ class Header extends Component {
                 </div>
                 <div className="header-bottom">
                     <div className="header-bottom-left">
-                        { this.title }
+                        { 
+                            // this.title 
+                            title
+                        }
                     </div>
                     <div className="header-bottom-right">
                         <span>{ currentTime }</span>
@@ -100,4 +110,9 @@ class Header extends Component {
         )
     }
 }
-export default withRouter(Header)
+export default connect(
+    state => ({
+        headTitle: state.headTitle
+    }),
+    {}
+)(withRouter(Header))
